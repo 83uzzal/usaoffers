@@ -3,25 +3,22 @@
 <head>
 <meta charset="UTF-8" />
 
-<!-- PERFECT MOBILE VIEW -->
-<meta name="viewport"
-content="width=device-width,
-initial-scale=1.0,
-maximum-scale=1.0,
-user-scalable=no,
+<meta name="viewport" 
+content="width=device-width, 
+initial-scale=1.0, 
+maximum-scale=1.0, 
+user-scalable=no, 
 viewport-fit=cover">
 
 <title>Premium Rewards Hub</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
-
 --bg1:#32004f;
 --bg2:#140020;
 --bg3:#050008;
@@ -43,11 +40,9 @@ viewport-fit=cover">
 
 --gold1:#d5a645;
 --gold2:#7d5512;
-
 }
 
 /* ===== RESET ===== */
-
 *{
 margin:0;
 padding:0;
@@ -60,33 +55,18 @@ scroll-behavior:smooth;
 }
 
 body{
-
 font-family:'Poppins',sans-serif;
-
-background:
-radial-gradient(circle at top,
-var(--bg1) 0%,
-var(--bg2) 40%,
-var(--bg3) 100%);
-
+background: radial-gradient(circle at top, var(--bg1) 0%, var(--bg2) 40%, var(--bg3) 100%);
 color:var(--white);
-
 min-height:100vh;
-
 overflow-x:hidden;
-
-padding:
-max(18px, env(safe-area-inset-top))
-14px
-max(22px, env(safe-area-inset-bottom));
-
+/* Mobile Safe Area Padding */
+padding: max(15px, env(safe-area-inset-top)) 12px max(20px, env(safe-area-inset-bottom));
 -webkit-font-smoothing:antialiased;
 text-rendering:optimizeLegibility;
-
 }
 
 /* ===== CONTAINER ===== */
-
 .container{
 width:100%;
 max-width:1150px;
@@ -94,452 +74,190 @@ margin:auto;
 }
 
 /* ===== HEADER ===== */
-
 .header{
 text-align:center;
-margin-bottom:34px;
+margin-bottom:26px;
 }
 
 .header h1{
-
-font-size:clamp(2rem,9vw,5rem);
-
+font-size:clamp(1.8rem, 8vw, 4.5rem);
 font-weight:800;
-
-line-height:1.05;
-
-background:
-linear-gradient(to bottom,#fff,#bbbbbb);
-
+line-height:1.1;
+background: linear-gradient(to bottom, #fff, #bbbbbb);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-
-text-shadow:
-0 0 25px rgba(255,255,255,.18);
-
-padding-inline:5px;
-
+text-shadow: 0 0 25px rgba(255,255,255,.15);
+padding-inline:4px;
 }
 
 .ribbon{
-
 display:inline-flex;
-
 justify-content:center;
 align-items:center;
-
-margin-top:16px;
-
-padding:11px 18px;
-
+margin-top:12px;
+padding:10px 16px;
 border-radius:12px;
-
-background:
-linear-gradient(to bottom,#666,#333);
-
-border:
-1px solid rgba(255,255,255,.15);
-
-font-size:.74rem;
-
+background: linear-gradient(to bottom, #555, #222);
+border: 1px solid rgba(255,255,255,.12);
+font-size:clamp(0.68rem, 2vw, 0.78rem);
 font-weight:600;
-
 letter-spacing:.3px;
-
-line-height:1.4;
-
+line-height:1.3;
 text-align:center;
-
-max-width:100%;
-
-box-shadow:
-0 8px 18px rgba(0,0,0,.45);
-
+width:100%;
+max-width:420px;
+box-shadow: 0 6px 15px rgba(0,0,0,.4);
 }
 
-/* ===== GRID ===== */
-
+/* ===== GRID SYSTEM (AUTO-FLEXIBLE FOR ALL MOBILES) ===== */
 .grid{
-
 display:grid;
-
-grid-template-columns:
-repeat(3,minmax(0,1fr));
-
-gap:22px;
-
+/* অটোমেটিক স্ক্রিন সাইজ বুঝে ১, ২ বা ৩ কলামে ভাগ হবে */
+grid-template-columns: repeat(auto-fill, minmax(min(100%, 310px), 1fr));
+gap:16px;
 }
 
 /* ===== CARD ===== */
-
 .card{
-
 position:relative;
-
-border-radius:24px;
-
+border-radius:20px;
 overflow:hidden;
-
 background:var(--card);
-
-border:
-1px solid rgba(255,255,255,.08);
-
-box-shadow:
-0 18px 35px rgba(0,0,0,.55);
-
-transition:
-transform .35s ease,
-box-shadow .35s ease;
-
-min-width:0;
-
+border: 1px solid rgba(255,255,255,.07);
+box-shadow: 0 12px 28px rgba(0,0,0,.5);
+transition: transform .3s ease, box-shadow .3s ease;
+display:flex;
+flex-direction:column;
+height:100%;
 }
 
 .card:hover{
-
-transform:
-translateY(-8px);
-
-box-shadow:
-0 28px 50px rgba(0,0,0,.7),
-0 0 18px rgba(162,89,255,.18);
-
+transform: translateY(-5px);
+box-shadow: 0 20px 40px rgba(0,0,0,.65), 0 0 15px rgba(162,89,255,.15);
 }
 
 /* ===== IMAGE ===== */
-
 .top{
-
 position:relative;
-
 width:100%;
-
 aspect-ratio:16/10;
-
 overflow:hidden;
-
 background:#111;
-
 }
 
 .top img{
-
 width:100%;
 height:100%;
-
 object-fit:cover;
-
 display:block;
-
 transition:transform .4s ease;
-
 }
 
 .card:hover .top img{
-transform:scale(1.08);
+transform:scale(1.05);
 }
 
 /* ===== BADGES ===== */
-
 .badge{
-
 position:absolute;
-
-top:12px;
-
-padding:7px 12px;
-
-border-radius:10px;
-
-font-size:.63rem;
-
+top:10px;
+padding:6px 10px;
+border-radius:8px;
+font-size:.6rem;
 font-weight:700;
-
 text-transform:uppercase;
-
-z-index:20;
-
-box-shadow:
-0 4px 12px rgba(0,0,0,.35);
-
-backdrop-filter:blur(8px);
-
-max-width:calc(100% - 24px);
-
+z-index:10;
+box-shadow: 0 4px 10px rgba(0,0,0,.3);
+backdrop-filter:blur(6px);
+max-width:calc(100% - 20px);
 white-space:nowrap;
-
 overflow:hidden;
-
 text-overflow:ellipsis;
-
 }
 
 .hot{
-
-right:12px;
-
-background:
-linear-gradient(to right,#ff416c,#ff4b2b);
-
+right:10px;
+background: linear-gradient(to right,#ff416c,#ff4b2b);
 }
 
 .verify{
-
-left:12px;
-
-background:
-linear-gradient(to right,#00d68f,#76ffd4);
-
+left:10px;
+background: linear-gradient(to right,#00d68f,#76ffd4);
 color:#04241b;
-
 }
 
 /* ===== CONTENT ===== */
-
 .content{
-
-padding:18px;
-
-background:
-linear-gradient(to bottom,
-var(--card2),
-#0b0b13);
-
+padding:16px;
+background: linear-gradient(to bottom, var(--card2), #0b0b13);
+display:flex;
+flex-direction:column;
+flex-grow:1;
+justify-content:space-between;
 }
 
 .content h2{
-
-font-size:1rem;
-
+font-size:clamp(0.9rem, 2.5vw, 1.05rem);
 font-weight:700;
-
-line-height:1.45;
-
+line-height:1.4;
 text-align:center;
-
-margin-bottom:18px;
-
-min-height:56px;
-
+margin-bottom:14px;
+min-height:48px;
 display:flex;
-
 align-items:center;
 justify-content:center;
-
 word-break:break-word;
-
+overflow:hidden;
 }
 
 /* ===== BUTTON ===== */
-
 .btn{
-
 display:flex;
-
 justify-content:center;
 align-items:center;
-
 width:100%;
-
-min-height:52px;
-
-padding:14px 16px;
-
-border-radius:14px;
-
+min-height:48px;
+padding:12px 14px;
+border-radius:12px;
 text-decoration:none;
-
 color:#fff;
-
-font-size:.82rem;
-
+font-size:.85rem;
 font-weight:800;
-
 letter-spacing:.5px;
-
-transition:
-transform .25s ease,
-filter .25s ease;
-
+transition: transform .2s ease, filter .2s ease;
 user-select:none;
-
 -webkit-tap-highlight-color:transparent;
-
+margin-top:auto;
 }
 
 .btn:hover{
-
-transform:scale(1.02);
-
-filter:brightness(1.08);
-
+filter:brightness(1.1);
 }
 
 .btn:active{
-transform:scale(.98);
+transform:scale(.97);
 }
 
-/* ===== COLORS ===== */
-
-.green{
-background:
-linear-gradient(to bottom,
-var(--green1),
-var(--green2));
-}
-
-.blue{
-background:
-linear-gradient(to bottom,
-var(--blue1),
-var(--blue2));
-}
-
-.red{
-background:
-linear-gradient(to bottom,
-var(--red1),
-var(--red2));
-}
-
-.gold{
-background:
-linear-gradient(to bottom,
-var(--gold1),
-var(--gold2));
-}
+/* ===== BUTTON COLORS ===== */
+.green{ background: linear-gradient(to bottom, var(--green1), var(--green2)); }
+.blue{ background: linear-gradient(to bottom, var(--blue1), var(--blue2)); }
+.red{ background: linear-gradient(to bottom, var(--red1), var(--red2)); }
+.gold{ background: linear-gradient(to bottom, var(--gold1), var(--gold2)); }
 
 /* ===== FOOTER ===== */
-
 footer{
-
-margin-top:50px;
-
+margin-top:40px;
 text-align:center;
-
 color:var(--muted);
-
-font-size:.78rem;
-
-line-height:1.6;
-
+font-size:.75rem;
+line-height:1.5;
 padding-inline:10px;
-
 }
 
-/* ===== TABLET ===== */
-
-@media(max-width:1024px){
-
-.grid{
-grid-template-columns:
-repeat(2,minmax(0,1fr));
-}
-
-}
-
-/* ===== MOBILE ===== */
-
-@media(max-width:768px){
-
-body{
-padding:
-max(14px, env(safe-area-inset-top))
-13px
-max(18px, env(safe-area-inset-bottom));
-}
-
-.header{
-margin-bottom:28px;
-}
-
-.header h1{
-font-size:clamp(2rem,11vw,3rem);
-}
-
-.ribbon{
-width:100%;
-font-size:.72rem;
-padding:11px 14px;
-}
-
-.grid{
-grid-template-columns:1fr;
-gap:18px;
-}
-
-.card{
-border-radius:22px;
-}
-
-.top{
-aspect-ratio:16/9;
-}
-
-.content{
-padding:16px;
-}
-
-.content h2{
-font-size:.97rem;
-margin-bottom:16px;
-min-height:auto;
-}
-
-.btn{
-font-size:.8rem;
-min-height:52px;
-}
-
-}
-
-/* ===== SMALL IPHONE ===== */
-
-@media(max-width:390px){
-
-.header h1{
-font-size:1.85rem;
-}
-
-.badge{
-font-size:.56rem;
-padding:6px 10px;
-}
-
-.content{
-padding:15px;
-}
-
-.content h2{
-font-size:.92rem;
-}
-
-.btn{
-font-size:.76rem;
-letter-spacing:.3px;
-}
-
-footer{
-font-size:.72rem;
-}
-
-}
-
-/* ===== REDUCED MOTION ===== */
-
+/* ===== REDUCED MOTION GESTURE ===== */
 @media(prefers-reduced-motion:reduce){
-
-*{
-scroll-behavior:auto;
-}
-
-.card,
-.btn,
-.top img{
-transition:none;
-}
-
+*{ scroll-behavior:auto; }
+.card, .btn, .top img{ transition:none; }
 }
 
 </style>
@@ -549,188 +267,148 @@ transition:none;
 
 <div class="container">
 
-<!-- HEADER -->
-
-<div class="header">
-
+<header class="header">
 <h1>Unlock Your Rewards</h1>
-
 <div class="ribbon">
 Verified Offers • Fast Access • Big Prizes
 </div>
+</header>
 
-</div>
-
-<!-- GRID -->
-
-<div class="grid">
-
-<!-- CARD 1 -->
+<main class="grid">
 
 <div class="card">
-
-<div class="badge hot">
-🔥 Ending Soon
-</div>
-
+<span class="badge hot">🔥 Hot</span>
 <div class="top">
-<img
-src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=1200&auto=format&fit=crop"
-alt="Cash Sweepstakes"
-loading="lazy">
+<img src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?q=80&w=1200&auto=format&fit=crop" alt="Amazon" loading="lazy">
 </div>
-
 <div class="content">
-
-<h2>Win $50,000 Cash Sweepstakes</h2>
-
-<a href="#" class="btn green">
-ENTER TO WIN
-</a>
-
+<h2>25741 American Prizes Amazon $1,000</h2>
+<a href="https://www.af9m8trk.com/BL6116FS/TJ2123FW/" class="btn blue">GO</a>
 </div>
-
 </div>
-
-<!-- CARD 2 -->
 
 <div class="card">
-
-<div class="badge verify">
-✓ Verified
-</div>
-
+<span class="badge verify">✓ Verified</span>
 <div class="top">
-<img
-src="https://images.unsplash.com/photo-1607082349566-187342175e2f?q=80&w=1200&auto=format&fit=crop"
-alt="Walmart eCard"
-loading="lazy">
+<img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=1200&auto=format&fit=crop" alt="CashApp" loading="lazy">
 </div>
-
 <div class="content">
-
-<h2>Walmart eCard Instant Access</h2>
-
-<a href="#" class="btn blue">
-CLAIM ECARD
-</a>
-
+<h2>24913 OkWow - CashApp $850</h2>
+<a href="https://www.af9m8trk.com/BL6116FS/5JY122KX/" class="btn green">GO</a>
 </div>
-
 </div>
-
-<!-- CARD 3 -->
 
 <div class="card">
-
-<div class="badge hot">
-Trending #1
-</div>
-
+<span class="badge hot">Trending #1</span>
 <div class="top">
-<img
-src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=1200&auto=format&fit=crop"
-alt="Coke vs Pepsi"
-loading="lazy">
+<img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=1200&auto=format&fit=crop" alt="Cash" loading="lazy">
 </div>
-
 <div class="content">
-
-<h2>$1,000 Coke vs Pepsi Challenge</h2>
-
-<a href="#" class="btn red">
-START VOTE
-</a>
-
+<h2>4385 Rewards US - Cash $750 - (US)</h2>
+<a href="https://www.af9m8trk.com/BL6116FS/W8F12MFY/" class="btn green">GO</a>
 </div>
-
 </div>
-
-<!-- CARD 4 -->
 
 <div class="card">
-
-<div class="badge verify">
-✓ Verified
-</div>
-
+<span class="badge verify">✓ Verified</span>
 <div class="top">
-<img
-src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?q=80&w=1200&auto=format&fit=crop"
-alt="Amazon Gift Card"
-loading="lazy">
+<img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?q=80&w=1200&auto=format&fit=crop" alt="Amazon US" loading="lazy">
 </div>
-
 <div class="content">
-
-<h2>$1,000 Amazon Gift Card Pack</h2>
-
-<a href="#" class="btn blue">
-GET STARTED
-</a>
-
+<h2>18603 Rewards US - Amazon $750</h2>
+<a href="https://www.af9m8trk.com/BL6116FS/54612BXY/" class="btn blue">GO</a>
 </div>
-
 </div>
-
-<!-- CARD 5 -->
 
 <div class="card">
-
-<div class="badge hot">
-Top Rated
-</div>
-
+<span class="badge hot">Top Rated</span>
 <div class="top">
-<img
-src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop"
-alt="Grocery Rewards"
-loading="lazy">
+<img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop" alt="Zelle" loading="lazy">
 </div>
-
 <div class="content">
-
-<h2>$1,000 Grocery Rewards Program</h2>
-
-<a href="#" class="btn gold">
-UNLOCK REWARD
-</a>
-
+<h2>27279 UpLevelRewards - Zelle $750</h2>
+<a href="https://www.af9m8trk.com/BL6116FS/8LP123XC/" class="btn gold">GO</a>
 </div>
-
 </div>
-
-<!-- CARD 6 -->
 
 <div class="card">
-
-<div class="badge hot">
-Popular
-</div>
-
+<span class="badge hot">Popular</span>
 <div class="top">
-<img
-src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1200&auto=format&fit=crop"
-alt="Instant Cash Deposit"
-loading="lazy">
+<img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=1200&auto=format&fit=crop" alt="Target" loading="lazy">
 </div>
-
 <div class="content">
-
-<h2>$750 Instant Cash Deposit</h2>
-
-<a href="#" class="btn green">
-RECEIVE CASH
-</a>
-
+<h2>27281 UpLevelRewards - Target $750</h2>
+<a href="https://www.af9m8trk.com/BL6116FS/HMG123XJ/" class="btn red">GO</a>
+</div>
 </div>
 
+<div class="card">
+<span class="badge verify">✓ Verified</span>
+<div class="top">
+<img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?q=80&w=1200&auto=format&fit=crop" alt="McDonalds" loading="lazy">
+</div>
+<div class="content">
+<h2>27282 UpLevelRewards - McDonald's $100</h2>
+<a href="https://www.af9m8trk.com/BL6116FS/UPW123XH/" class="btn red">GO</a>
+</div>
 </div>
 
+<div class="card">
+<span class="badge hot">🔥 New</span>
+<div class="top">
+<img src="https://images.unsplash.com/photo-1580828343064-fde4fc206bc6?q=80&w=1200&auto=format&fit=crop" alt="Costco" loading="lazy">
+</div>
+<div class="content">
+<h2>27283 UpLevelRewards - Costco $750</h2>
+<a href="https://www.af9m8trk.com/BL6116FS/NB9123XG/" class="btn blue">GO</a>
+</div>
 </div>
 
-<!-- FOOTER -->
+<div class="card">
+<span class="badge verify">✓ Active</span>
+<div class="top">
+<img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=1200&auto=format&fit=crop" alt="Deposit" loading="lazy">
+</div>
+<div class="content">
+<h2>27280 UpLevelRewards - $1000 Cash Deposit</h2>
+<a href="https://www.af9m8trk.com/BL6116FS/4K1123XK/" class="btn green">GO</a>
+</div>
+</div>
 
+<div class="card">
+<span class="badge hot">Ending Soon</span>
+<div class="top">
+<img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?q=80&w=1200&auto=format&fit=crop" alt="iPhone" loading="lazy">
+</div>
+<div class="content">
+<h2>18652 iPhone 15 Pro Max Bonus $750</h2>
+<a href="https://www.af9m8trk.com/BL6116FS/JFD12BVR/" class="btn gold">GO</a>
+</div>
+</div>
+
+<div class="card">
+<span class="badge verify">✓ Verified</span>
+<div class="top">
+<img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?q=80&w=1200&auto=format&fit=crop" alt="Amazon Bonus" loading="lazy">
+</div>
+<div class="content">
+<h2>18653 Amazon Bonus $750</h2>
+<a href="https://www.af9m8trk.com/BL6116FS/MGH12BVQ/" class="btn blue">GO</a>
+</div>
+</div>
+
+<div class="card">
+<span class="badge hot">Trending #2</span>
+<div class="top">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop" alt="Shein" loading="lazy">
+</div>
+<div class="content">
+<h2>18651 Rewards UK - Shein £750 Shopping</h2>
+<a href="https://www.af9m8trk.com/BL6116FS/16F12BVJ/" class="btn red">GO</a>
+</div>
+</div>
+
+</main>
 <footer>
 Copyright © 2026 RewardsHub • Safe & Secure Offers
 </footer>
