@@ -1,419 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
+<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Infinity Rewards | Elite Gateway</title>    <style>        :root {            --slate-black: #060814;            --electric-magenta: #ff007f;            --neon-blue: #00f0ff;            --premium-gold: #ffb703;            --matrix-green: #39ff14;            --glass-card: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);            --border-glow: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(255, 0, 127, 0.3));        }
 
-<meta name="viewport" 
-content="width=device-width, 
-initial-scale=1.0, 
-maximum-scale=1.0, 
-user-scalable=no, 
-viewport-fit=cover">
+        * {            box-sizing: border-box;            margin: 0;            padding: 0;            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;        }
 
-<title>Premium Rewards Hub</title>
+        body {            background-color: var(--slate-black);            background-image:                 radial-gradient(at 0% 0%, rgba(255, 0, 127, 0.12) 0px, transparent 50%),                radial-gradient(at 100% 100%, rgba(0, 240, 255, 0.12) 0px, transparent 50%);            background-attachment: fixed;            color: #f1f5f9;            padding: 40px 20px 0 20px;            display: flex;            flex-direction: column;            align-items: center;            min-height: 100vh;        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        header {            text-align: center;            margin-bottom: 60px;            max-width: 750px;            position: relative;        }
 
-<style>
+        .premium-tag {            background: linear-gradient(90deg, var(--electric-magenta), var(--neon-blue));            padding: 5px 15px;            border-radius: 50px;            font-size: 0.75rem;            font-weight: 800;            text-transform: uppercase;            letter-spacing: 3px;            color: #fff;            display: inline-block;            margin-bottom: 20px;            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);        }
 
-:root{
---bg1:#32004f;
---bg2:#140020;
---bg3:#050008;
+        header h1 {            font-size: 3rem;            font-weight: 900;            letter-spacing: -1px;            line-height: 1.1;            margin-bottom: 20px;            background: linear-gradient(180deg, #ffffff 30%, #a5b4fc 100%);            -webkit-background-clip: text;            -webkit-text-fill-color: transparent;        }
 
---card:#12121b;
---card2:#171720;
+        header h1 span {            background: linear-gradient(90deg, var(--neon-blue), var(--electric-magenta));            -webkit-background-clip: text;            -webkit-text-fill-color: transparent;            text-shadow: 0 0 40px rgba(0, 240, 255, 0.2);        }
 
---white:#fff;
---muted:#a5a5a5;
+        header p {            color: #94a3b8;            font-size: 1.1rem;            line-height: 1.7;        }
 
---green1:#18cf60;
---green2:#0b7f35;
+        /* Extraordinary Grid System */        .elite-grid {            display: grid;            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));            gap: 30px;            width: 100%;            max-width: 1200px;            flex-grow: 1;            margin-bottom: 80px;        }
 
---blue1:#4693ff;
---blue2:#1551b5;
+        /* Luxury Cyber Card Styling */        .elite-card {            background: var(--glass-card);            border-radius: 24px;            position: relative;            padding: 24px;            display: flex;            flex-direction: column;            justify-content: space-between;            backdrop-filter: blur(20px);            -webkit-backdrop-filter: blur(20px);            border: 1px solid rgba(255, 255, 255, 0.05);            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);            overflow: hidden;        }
 
---red1:#ff4343;
---red2:#b41212;
+        /* Neon Border Hover Effect */        .elite-card::before {            content: '';            position: absolute;            inset: 0;            border-radius: 24px;            padding: 1.5px;            background: var(--border-glow);            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);            -webkit-mask-composite: xor;            mask-composite: exclude;            pointer-events: none;            opacity: 0.3;            transition: opacity 0.5s ease;        }
 
---gold1:#d5a645;
---gold2:#7d5512;
-}
+        .elite-card:hover {            transform: translateY(-8px);            box-shadow: 0 30px 60px rgba(0, 240, 255, 0.15);            border-color: rgba(255, 255, 255, 0.1);        }
 
-/* ===== RESET ===== */
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+        .elite-card:hover::before {            opacity: 1;        }
 
-html{
-scroll-behavior:smooth;
--webkit-text-size-adjust:100%;
-}
+        /* Top Bar of Card */        .card-top {            display: flex;            justify-content: space-between;            align-items: center;            margin-bottom: 20px;        }
 
-body{
-font-family:'Poppins',sans-serif;
-background: radial-gradient(circle at top, var(--bg1) 0%, var(--bg2) 40%, var(--bg3) 100%);
-color:var(--white);
-min-height:100vh;
-overflow-x:hidden;
-/* Mobile Safe Area Padding */
-padding: max(15px, env(safe-area-inset-top)) 12px max(20px, env(safe-area-inset-bottom));
--webkit-font-smoothing:antialiased;
-text-rendering:optimizeLegibility;
-}
+        .network-id {            font-size: 0.75rem;            font-weight: 700;            color: #64748b;            background: rgba(255,255,255,0.03);            padding: 4px 10px;            border-radius: 8px;            border: 1px solid rgba(255,255,255,0.05);            letter-spacing: 0.5px;        }
 
-/* ===== CONTAINER ===== */
-.container{
-width:100%;
-max-width:1150px;
-margin:auto;
-}
+        .status-dot {            display: flex;            align-items: center;            gap: 6px;            font-size: 0.7rem;            color: var(--matrix-green);            text-transform: uppercase;            font-weight: 700;            letter-spacing: 1px;        }
 
-/* ===== HEADER ===== */
-.header{
-text-align:center;
-margin-bottom:26px;
-}
+        .status-dot::before {            content: '';            width: 6px;            height: 6px;            background-color: var(--matrix-green);            border-radius: 50%;            box-shadow: 0 0 8px var(--matrix-green);        }
 
-.header h1{
-font-size:clamp(1.8rem, 8vw, 4.5rem);
-font-weight:800;
-line-height:1.1;
-background: linear-gradient(to bottom, #fff, #bbbbbb);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-text-shadow: 0 0 25px rgba(255,255,255,.15);
-padding-inline:4px;
-}
+        /* Luxury Rounded Image Box */        .visual-frame {            width: 100%;            height: 180px;            border-radius: 16px;            overflow: hidden;            margin-bottom: 20px;            position: relative;            background: #0b0f19;        }
 
-.ribbon{
-display:inline-flex;
-justify-content:center;
-align-items:center;
-margin-top:12px;
-padding:10px 16px;
-border-radius:12px;
-background: linear-gradient(to bottom, #555, #222);
-border: 1px solid rgba(255,255,255,.12);
-font-size:clamp(0.68rem, 2vw, 0.78rem);
-font-weight:600;
-letter-spacing:.3px;
-line-height:1.3;
-text-align:center;
-width:100%;
-max-width:420px;
-box-shadow: 0 6px 15px rgba(0,0,0,.4);
-}
+        .visual-img {            width: 100%;            height: 100%;            object-fit: cover;            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);            filter: grayscale(20%) brightness(90%);        }
 
-/* ===== GRID SYSTEM (AUTO-FLEXIBLE FOR ALL MOBILES) ===== */
-.grid{
-display:grid;
-/* অটোমেটিক স্ক্রিন সাইজ বুঝে ১, ২ বা ৩ কলামে ভাগ হবে */
-grid-template-columns: repeat(auto-fill, minmax(min(100%, 310px), 1fr));
-gap:16px;
-}
+        .elite-card:hover .visual-img {            transform: scale(1.08);            filter: grayscale(0%) brightness(100%);        }
 
-/* ===== CARD ===== */
-.card{
-position:relative;
-border-radius:20px;
-overflow:hidden;
-background:var(--card);
-border: 1px solid rgba(255,255,255,.07);
-box-shadow: 0 12px 28px rgba(0,0,0,.5);
-transition: transform .3s ease, box-shadow .3s ease;
-display:flex;
-flex-direction:column;
-height:100%;
-}
+        /* Info Section */        .offer-info h2 {            font-size: 1.35rem;            font-weight: 800;            color: #ffffff;            margin-bottom: 10px;            line-height: 1.3;            letter-spacing: -0.3px;        }
 
-.card:hover{
-transform: translateY(-5px);
-box-shadow: 0 20px 40px rgba(0,0,0,.65), 0 0 15px rgba(162,89,255,.15);
-}
+        .offer-info p {            color: #94a3b8;            font-size: 0.875rem;            line-height: 1.5;            margin-bottom: 25px;        }
 
-/* ===== IMAGE ===== */
-.top{
-position:relative;
-width:100%;
-aspect-ratio:16/10;
-overflow:hidden;
-background:#111;
-}
+        /* Luxury Button Trigger */        .action-trigger {            display: block;            text-align: center;            background: #ffffff;            color: #000000;            text-decoration: none;            padding: 14px;            border-radius: 14px;            font-weight: 700;            font-size: 0.95rem;            letter-spacing: -0.2px;            transition: all 0.3s ease;            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);        }
 
-.top img{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block;
-transition:transform .4s ease;
-}
+        .elite-card:hover class="action-trigger" {            background: linear-gradient(90deg, var(--neon-blue), var(--electric-magenta));            color: #ffffff;            box-shadow: 0 10px 25px rgba(240, 0, 255, 0.3);        }
 
-.card:hover .top img{
-transform:scale(1.05);
-}
+        .elite-card:hover .action-trigger {            background: linear-gradient(90deg, var(--neon-blue), var(--electric-magenta));            color: #ffffff;            box-shadow: 0 10px 25px rgba(240, 0, 255, 0.3);        }
 
-/* ===== BADGES ===== */
-.badge{
-position:absolute;
-top:10px;
-padding:6px 10px;
-border-radius:8px;
-font-size:.6rem;
-font-weight:700;
-text-transform:uppercase;
-z-index:10;
-box-shadow: 0 4px 10px rgba(0,0,0,.3);
-backdrop-filter:blur(6px);
-max-width:calc(100% - 20px);
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis;
-}
+        /* Specific Color Variations to maximize luxury look */        .elite-card:nth-child(even):hover .action-trigger {            background: linear-gradient(90deg, var(--premium-gold), var(--electric-magenta));        }
 
-.hot{
-right:10px;
-background: linear-gradient(to right,#ff416c,#ff4b2b);
-}
+        /* Epic Cosmic Footer */        footer {            width: 100%;            max-width: 1200px;            border-top: 1px solid rgba(255, 255, 255, 0.04);            padding: 50px 20px;            text-align: center;            color: #475569;        }
 
-.verify{
-left:10px;
-background: linear-gradient(to right,#00d68f,#76ffd4);
-color:#04241b;
-}
+        .footer-nav-links {            margin-bottom: 25px;        }
 
-/* ===== CONTENT ===== */
-.content{
-padding:16px;
-background: linear-gradient(to bottom, var(--card2), #0b0b13);
-display:flex;
-flex-direction:column;
-flex-grow:1;
-justify-content:space-between;
-}
+        .footer-nav-links a {            color: #94a3b8;            text-decoration: none;            margin: 0 18px;            font-size: 0.85rem;            font-weight: 500;            transition: color 0.3s;        }
 
-.content h2{
-font-size:clamp(0.9rem, 2.5vw, 1.05rem);
-font-weight:700;
-line-height:1.4;
-text-align:center;
-margin-bottom:14px;
-min-height:48px;
-display:flex;
-align-items:center;
-justify-content:center;
-word-break:break-word;
-overflow:hidden;
-}
+        .footer-nav-links a:hover {            color: var(--neon-blue);        }
 
-/* ===== BUTTON ===== */
-.btn{
-display:flex;
-justify-content:center;
-align-items:center;
-width:100%;
-min-height:48px;
-padding:12px 14px;
-border-radius:12px;
-text-decoration:none;
-color:#fff;
-font-size:.85rem;
-font-weight:800;
-letter-spacing:.5px;
-transition: transform .2s ease, filter .2s ease;
-user-select:none;
--webkit-tap-highlight-color:transparent;
-margin-top:auto;
-}
+        .footer-copyright {            font-size: 0.8rem;            line-height: 1.8;            max-width: 800px;            margin: 0 auto;        }
 
-.btn:hover{
-filter:brightness(1.1);
-}
+        /* Flawless Mobile Responsiveness & Compact 2-Column Grid */        @media (max-width: 480px) {            body {                padding: 20px 10px 0 10px;            }            header {                margin-bottom: 30px;            }            header h1 {                 font-size: 1.8rem;             }            header p {                font-size: 0.9rem;                line-height: 1.5;            }                        /* Mobiles 2 Cards Side-by-Side */            .elite-grid {                 grid-template-columns: repeat(2, 1fr);                 gap: 12px;                 margin-bottom: 40px;            }                        /* Compact Padding */            .elite-card {                 padding: 12px;                 border-radius: 14px;             }            .elite-card::before {                 border-radius: 14px;             }                        .card-top {                margin-bottom: 10px;            }            .network-id {                font-size: 0.6rem;                padding: 2px 6px;            }            .status-dot {                font-size: 0.55rem;                gap: 4px;            }            .status-dot::before {                width: 4px;                height: 4px;            }
 
-.btn:active{
-transform:scale(.97);
-}
+            /* Small Responsive Image Height */            .visual-frame {                 height: 90px;                 margin-bottom: 10px;                border-radius: 10px;            }                        /* Compact Typography */            .offer-info h2 {                font-size: 0.9rem;                margin-bottom: 6px;                letter-spacing: -0.2px;            }            .offer-info p {                font-size: 0.75rem;                line-height: 1.3;                margin-bottom: 15px;                display: -webkit-box;                -webkit-line-clamp: 2; /* Locks paragraph description to 2 lines maximum */                -webkit-box-orient: vertical;                overflow: hidden;            }                        /* Mini Button Adjustment */            .action-trigger {                padding: 8px;                border-radius: 8px;                font-size: 0.8rem;            }
 
-/* ===== BUTTON COLORS ===== */
-.green{ background: linear-gradient(to bottom, var(--green1), var(--green2)); }
-.blue{ background: linear-gradient(to bottom, var(--blue1), var(--blue2)); }
-.red{ background: linear-gradient(to bottom, var(--red1), var(--red2)); }
-.gold{ background: linear-gradient(to bottom, var(--gold1), var(--gold2)); }
+            .footer-nav-links a {                 display: inline-block;                 margin: 6px 10px;                 font-size: 0.75rem;            }            .footer-copyright {                font-size: 0.7rem;            }        }    </style></head><body>
+    <header>        <div class="premium-tag">V.I.P Allocation System</div>        <h1>Exclusive Portal: <span>Infinity Rewards</span></h1>        <p>Select a digital voucher asset below. Complete the real-time identity synchronization on the secure clearing panel to verify ownership and process instant promotional deposits.</p>    </header>
 
-/* ===== FOOTER ===== */
-footer{
-margin-top:40px;
-text-align:center;
-color:var(--muted);
-font-size:.75rem;
-line-height:1.5;
-padding-inline:10px;
-}
+    <div class="elite-grid">
+        <!-- Offer 1 -->        <div class="elite-card">            <div>                <div class="card-top">                    <span class="network-id">OFFER ID: 91</span>                    <span class="status-dot">Live Spot</span>                </div>                <div class="visual-frame">                    <img class="visual-img" src="https://images.unsplash.com/photo-1624462966581-bc6d768cbce5?w=500&auto=format&fit=crop&q=60" alt="Taco Bell Meal">                </div>                <div class="offer-info">                    <h2>Taco Bell $100 Gift Card</h2>                    <p>Unlock a $100 meal voucher asset code instantly valid for your favorite quick-service menu picks.</p>                </div>            </div>            <a href="https://app.hawktrk.com/click?pid=2&offer_id=91&sub2=u653891&sub5=Tat_mamunMRH" target="_blank" class="action-trigger">Initialize Claim</a>        </div>
 
-/* ===== REDUCED MOTION GESTURE ===== */
-@media(prefers-reduced-motion:reduce){
-*{ scroll-behavior:auto; }
-.card, .btn, .top img{ transition:none; }
-}
+        <!-- Offer 2 -->        <div class="elite-card">            <div>                <div class="card-top">                    <span class="network-id">OFFER ID: 18251</span>                    <span class="status-dot">Live Spot</span>                </div>                <div class="visual-frame">                    <img class="visual-img" src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=500&auto=format&fit=crop&q=60" alt="Wealth Cash Grand Prize">                </div>                <div class="offer-info">                    <h2>PrizeZappy $50K Sweepstakes</h2>                    <p>Enter the elite dynamic ledger pool for a direct verification tier to win the $50,000 cash pool.</p>                </div>            </div>            <a href="https://app.hawktrk.com/click?pid=2&offer_id=18251&sub2=u653891&sub5=Tat_mamunMRH" target="_blank" class="action-trigger">Initialize Claim</a>        </div>
 
-</style>
-</head>
+        <!-- Offer 3 -->        <div class="elite-card">            <div>                <div class="card-top">                    <span class="network-id">OFFER ID: 7</span>                    <span class="status-dot">Live Spot</span>                </div>                <div class="visual-frame">                    <img class="visual-img" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60" alt="Chick-Fil-A Fast Food">                </div>                <div class="offer-info">                    <h2>Chick-Fil-A $100 Meal Pass</h2>                    <p>Premium food pipeline active. Complete simple entry steps to release a direct $100 restaurant card.</p>                </div>            </div>            <a href="https://app.hawktrk.com/click?pid=2&offer_id=7&sub2=u653891&sub5=Tat_mamunMRH" target="_blank" class="action-trigger">Initialize Claim</a>        </div>
 
-<body>
+        <!-- Offer 4 -->        <div class="elite-card">            <div>                <div class="card-top">                    <span class="network-id">OFFER ID: 11788</span>                    <span class="status-dot">Live Spot</span>                </div>                <div class="visual-frame">                    <img class="visual-img" src="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=500&auto=format&fit=crop&q=60" alt="CashApp Digital Banking">                </div>                <div class="offer-info">                    <h2>CashApp $750 Direct Credit</h2>                    <p>Execute your priority node mapping to link and clear a $750 premium asset to your wallet.</p>                </div>            </div>            <a href="https://app.hawktrk.com/click?pid=2&offer_id=11788&sub2=u653891&sub5=Tat_mamunMRH" target="_blank" class="action-trigger">Initialize Claim</a>        </div>
 
-<div class="container">
+        <!-- Offer 5 -->        <div class="elite-card">            <div>                <div class="card-top">                    <span class="network-id">OFFER ID: 576</span>                    <span class="status-dot">Live Spot</span>                </div>                <div class="visual-frame">                    <img class="visual-img" src="https://images.unsplash.com/photo-1561567451-247942c41915?w=500&auto=format&fit=crop&q=60" alt="PayPal Balance">                </div>                <div class="offer-info">                    <h2>PayPal $100 Instant Funds</h2>                    <p>Inject premium liquidity into your balance layer. Synchronize securely to claim this store voucher.</p>                </div>            </div>            <a href="https://app.hawktrk.com/click?pid=2&offer_id=576&sub2=u653891&sub5=Tat_mamunMRH" target="_blank" class="action-trigger">Initialize Claim</a>        </div>
 
-<header class="header">
-<h1>Unlock Your Rewards</h1>
-<div class="ribbon">
-Verified Offers • Fast Access • Big Prizes
-</div>
-</header>
+        <!-- Offer 6 -->        <div class="elite-card">            <div>                <div class="card-top">                    <span class="network-id">OFFER ID: 15720</span>                    <span class="status-dot">Live Spot</span>                </div>                <div class="visual-frame">                    <img class="visual-img" src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=500&auto=format&fit=crop&q=60" alt="Activewear Apparel">                </div>                <div class="offer-info">                    <h2>Lululemon Premium Gift Card</h2>                    <p>Upgrade your aesthetic matrix. Authenticate profile configurations to deploy high-tier apparel value.</p>                </div>            </div>            <a href="https://app.hawktrk.com/click?pid=2&offer_id=15720&sub2=u653891&sub5=Tat_mamunMRH" target="_blank" class="action-trigger">Initialize Claim</a>        </div>
 
-<main class="grid">
+        <!-- Offer 7 -->        <div class="elite-card">            <div>                <div class="card-top">                    <span class="network-id">OFFER ID: 16024</span>                    <span class="status-dot">Live Spot</span>                </div>                <div class="visual-frame">                    <img class="visual-img" src="https://images.unsplash.com/photo-1589758438368-0ad531db3366?w=500&auto=format&fit=crop&q=60" alt="Cash Pile Stack">                </div>                <div class="offer-info">                    <h2>Reward Spark Cash App $1000</h2>                    <p>Maximum wallet allocation tier active. Route your gateway verification steps to lock down this grand spot.</p>                </div>            </div>            <a href="https://app.hawktrk.com/click?pid=2&offer_id=16024&sub2=u653891&sub5=Tat_mamunMRH" target="_blank" class="action-trigger">Initialize Claim</a>        </div>
 
-<div class="card">
-<span class="badge hot">🔥 Hot</span>
-<div class="top">
-<img src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?q=80&w=1200&auto=format&fit=crop" alt="Amazon" loading="lazy">
-</div>
-<div class="content">
-<h2>25741 American Prizes Amazon $1,000</h2>
-<a href="https://www.af9m8trk.com/BL6116FS/TJ2123FW/" class="btn blue">GO</a>
-</div>
-</div>
+        <!-- Offer 8 -->        <div class="elite-card">            <div>                <div class="card-top">                    <span class="network-id">OFFER ID: 663</span>                    <span class="status-dot">Live Spot</span>                </div>                <div class="visual-frame">                    <img class="visual-img" src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=500&auto=format&fit=crop&q=60" alt="Digital Currency Transfer">                </div>                <div class="offer-info">                    <h2>Cash App $750 Quick Transfer</h2>                    <p>Synchronize identity fields on the clearing matrix to launch instant promotional portal tracking.</p>                </div>            </div>            <a href="https://app.hawktrk.com/click?pid=2&offer_id=663&sub2=u653891&sub5=Tat_mamunMRH" target="_blank" class="action-trigger">Initialize Claim</a>        </div>
 
-<div class="card">
-<span class="badge verify">✓ Verified</span>
-<div class="top">
-<img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=1200&auto=format&fit=crop" alt="CashApp" loading="lazy">
-</div>
-<div class="content">
-<h2>24913 OkWow - CashApp $850</h2>
-<a href="https://www.af9m8trk.com/BL6116FS/5JY122KX/" class="btn green">GO</a>
-</div>
-</div>
+        <!-- Offer 9 -->        <div class="elite-card">            <div>                <div class="card-top">                    <span class="network-id">OFFER ID: 20830</span>                    <span class="status-dot">Live Spot</span>                </div>                <div class="visual-frame">                    <img class="visual-img" src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=60" alt="Grocery Supermarket Cart">                </div>                <div class="offer-info">                    <h2>Rewards Locker Grocery $1000</h2>                    <p>Fulfill grocery inventory pipeline demand completely with a premium household provisioning voucher.</p>                </div>            </div>            <a href="https://app.hawktrk.com/click?pid=2&offer_id=20830&sub2=u653891&sub5=Tat_mamunMRH" target="_blank" class="action-trigger">Initialize Claim</a>        </div>
+    </div>
 
-<div class="card">
-<span class="badge hot">Trending #1</span>
-<div class="top">
-<img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=1200&auto=format&fit=crop" alt="Cash" loading="lazy">
-</div>
-<div class="content">
-<h2>4385 Rewards US - Cash $750 - (US)</h2>
-<a href="https://www.af9m8trk.com/BL6116FS/W8F12MFY/" class="btn green">GO</a>
-</div>
-</div>
-
-<div class="card">
-<span class="badge verify">✓ Verified</span>
-<div class="top">
-<img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?q=80&w=1200&auto=format&fit=crop" alt="Amazon US" loading="lazy">
-</div>
-<div class="content">
-<h2>18603 Rewards US - Amazon $750</h2>
-<a href="https://www.af9m8trk.com/BL6116FS/54612BXY/" class="btn blue">GO</a>
-</div>
-</div>
-
-<div class="card">
-<span class="badge hot">Top Rated</span>
-<div class="top">
-<img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop" alt="Zelle" loading="lazy">
-</div>
-<div class="content">
-<h2>27279 UpLevelRewards - Zelle $750</h2>
-<a href="https://www.af9m8trk.com/BL6116FS/8LP123XC/" class="btn gold">GO</a>
-</div>
-</div>
-
-<div class="card">
-<span class="badge hot">Popular</span>
-<div class="top">
-<img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=1200&auto=format&fit=crop" alt="Target" loading="lazy">
-</div>
-<div class="content">
-<h2>27281 UpLevelRewards - Target $750</h2>
-<a href="https://www.af9m8trk.com/BL6116FS/HMG123XJ/" class="btn red">GO</a>
-</div>
-</div>
-
-<div class="card">
-<span class="badge verify">✓ Verified</span>
-<div class="top">
-<img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?q=80&w=1200&auto=format&fit=crop" alt="McDonalds" loading="lazy">
-</div>
-<div class="content">
-<h2>27282 UpLevelRewards - McDonald's $100</h2>
-<a href="https://www.af9m8trk.com/BL6116FS/UPW123XH/" class="btn red">GO</a>
-</div>
-</div>
-
-<div class="card">
-<span class="badge hot">🔥 New</span>
-<div class="top">
-<img src="https://images.unsplash.com/photo-1580828343064-fde4fc206bc6?q=80&w=1200&auto=format&fit=crop" alt="Costco" loading="lazy">
-</div>
-<div class="content">
-<h2>27283 UpLevelRewards - Costco $750</h2>
-<a href="https://www.af9m8trk.com/BL6116FS/NB9123XG/" class="btn blue">GO</a>
-</div>
-</div>
-
-<div class="card">
-<span class="badge verify">✓ Active</span>
-<div class="top">
-<img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=1200&auto=format&fit=crop" alt="Deposit" loading="lazy">
-</div>
-<div class="content">
-<h2>27280 UpLevelRewards - $1000 Cash Deposit</h2>
-<a href="https://www.af9m8trk.com/BL6116FS/4K1123XK/" class="btn green">GO</a>
-</div>
-</div>
-
-<div class="card">
-<span class="badge hot">Ending Soon</span>
-<div class="top">
-<img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?q=80&w=1200&auto=format&fit=crop" alt="iPhone" loading="lazy">
-</div>
-<div class="content">
-<h2>18652 iPhone 15 Pro Max Bonus $750</h2>
-<a href="https://www.af9m8trk.com/BL6116FS/JFD12BVR/" class="btn gold">GO</a>
-</div>
-</div>
-
-<div class="card">
-<span class="badge verify">✓ Verified</span>
-<div class="top">
-<img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?q=80&w=1200&auto=format&fit=crop" alt="Amazon Bonus" loading="lazy">
-</div>
-<div class="content">
-<h2>18653 Amazon Bonus $750</h2>
-<a href="https://www.af9m8trk.com/BL6116FS/MGH12BVQ/" class="btn blue">GO</a>
-</div>
-</div>
-
-<div class="card">
-<span class="badge hot">Trending #2</span>
-<div class="top">
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop" alt="Shein" loading="lazy">
-</div>
-<div class="content">
-<h2>18651 Rewards UK - Shein £750 Shopping</h2>
-<a href="https://www.af9m8trk.com/BL6116FS/16F12BVJ/" class="btn red">GO</a>
-</div>
-</div>
-
-</main>
-<footer>
-Copyright © 2026 RewardsHub • Safe & Secure Offers
-</footer>
-
-</div>
-
-</body>
-</html>
+    <footer>        <div class="footer-nav-links">            <a href="#">Privacy Core</a>            <a href="#">Terms of Architecture</a>            <a href="#">Secure Support Node</a>        </div>        <p class="footer-copyright">            © 2026 Infinity Rewards Hub. Encrypted Portal Protocol. All rights reserved. <br><br>            Disclaimer: This web asset serves as an independent, decentralized promotional tracking directory. Intellectual properties, brand names, and certified trademarks belong fully to their respective legal entities. No endorsement or partnership implied.        </p>    </footer>
+</body></html>
